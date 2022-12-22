@@ -4,15 +4,12 @@ server:
 
 #server.port=8761
 
-
 #evitar que nuestro eureka server se registre a si mismo
 
 eureka:
   client:
     registerWithEureka: false
     fetchRegistry: false
-
-
 
 #eureka.client.register-with-eureka=false
 #eureka.client.fetch-registry=false
