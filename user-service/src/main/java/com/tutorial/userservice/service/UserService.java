@@ -1,28 +1,24 @@
 package com.tutorial.userservice.service;
 
 import com.tutorial.userservice.entity.User;
-import com.tutorial.userservice.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.tutorial.userservice.model.Bike;
+import com.tutorial.userservice.model.Car;
 
 import java.util.List;
+import java.util.Map;
 
-@Service
-public class UserService {
+public interface UserService {
 
-    @Autowired
-    UserRepository userRepository;
 
-    public List<User> getAll() {
-        return userRepository.findAll();
-    }
+    public List<User> getAll();
 
-    public User getUserById(int id) {
-        return userRepository.findById(id).orElse(null);
-    }
+    public User getUserById(int id);
 
-    public User save(User user) {
-        User userNew = userRepository.save(user);
-        return userNew;
-    }
+    public User save(User user);
+
+    public Car saveCar(int userId, Car car);
+
+    public Bike saveBike(int userId, Bike bike);
+
+    public Map<String, Object> getUserAndVehicles(int userId);
 }
