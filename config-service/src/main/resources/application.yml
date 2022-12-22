@@ -9,5 +9,6 @@ spring:
           default-label: config-server
           uri: https://github.com/johansel23/microservices
           search-paths: config-data
+
   application:
     name: config-service
