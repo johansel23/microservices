@@ -18,7 +18,10 @@ public interface UserService {
 
     public Car saveCar(int userId, Car car);
 
+    public List<Car> getCars(int userId);
+
     public Bike saveBike(int userId, Bike bike);
+    public List<Bike> getBikes(int userId);
 
     public Map<String, Object> getUserAndVehicles(int userId);
 }

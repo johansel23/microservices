@@ -46,10 +46,20 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<Car> getCars(int userId) {
+        return carFeignClient.getCars(userId);
+    }
+
+    @Override
     public Bike saveBike(int userId, Bike bike){
         bike.setUserId(userId);
         Bike bikeNew = bikeFeignClient.saveBike(bike);
         return bikeNew;
+    }
+
+    @Override
+    public List<Bike> getBikes(int userId) {
+        return bikeFeignClient.getBikes(userId);
     }
 
     @Override
@@ -65,6 +75,7 @@ public class UserServiceImpl implements UserService{
         result.put("User", user);
 
         List<Car> cars = carFeignClient.getCars(userId);
+
         if (cars.isEmpty()) {
             result.put("Cars", "ese user no tiene coches");
         }
