@@ -95,6 +95,48 @@
 										}
 									},
 									"response": []
+								},
+								{
+									"name": "Obtener carros de usuario",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/user/cars/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"user",
+												"cars",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener motos de usuario",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8080/user/bikes/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8080",
+											"path": [
+												"user",
+												"bikes",
+												"1"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
@@ -330,7 +372,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"brand\": \"toyota\",\r\n    \"model\": \"klk\",\r\n    \"userId\": 1\r\n    \r\n}",
+									"raw": "{\r\n    \"brand\": \"Suzuki\",\r\n    \"model\": \"gsx\"\r\n    \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -338,12 +380,12 @@
 									}
 								},
 								"url": {
-									"raw": "http://localhost:8003/bike",
+									"raw": "http://localhost:8080/bike",
 									"protocol": "http",
 									"host": [
 										"localhost"
 									],
-									"port": "8003",
+									"port": "8080",
 									"path": [
 										"bike"
 									]
