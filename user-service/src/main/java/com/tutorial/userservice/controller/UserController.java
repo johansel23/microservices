@@ -21,19 +21,24 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
-        List<User> users = userService.getAll();
-        if(users.isEmpty())
+    public ResponseEntity<Map<String, Object>> getAll() {
+        Map<String, Object> result = userService.getAll();
+
+        if(result.isEmpty()){
             return ResponseEntity.noContent().build();
-        return ResponseEntity.ok(users);
+        }
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable("id") int id) {
-        User user = userService.getUserById(id);
-        if(user == null)
+    public ResponseEntity<Map<String, Object>> getById(@PathVariable("id") int id) {
+
+        Map<String, Object> result = userService.getUserById(id);
+        if(result.isEmpty()) {
             return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(user);
+        }
+
+        return ResponseEntity.ok(result);
     }
 
     @PostMapping()
@@ -44,7 +49,7 @@ public class UserController {
     @CircuitBreaker(name = "carsCB", fallbackMethod = "fallBackGetCars")
     @GetMapping("/cars/{userId}")
     public ResponseEntity<List<Car>> getCars(@PathVariable("userId")  int userId){
-        User user = userService.getUserById(userId);
+        User user = (User) userService.getUserById(userId);
         if (user == null) {
             return ResponseEntity.notFound().build();
         }
@@ -66,7 +71,7 @@ public class UserController {
     @CircuitBreaker(name = "bikesCB", fallbackMethod = "fallBackGetBikes")
     @GetMapping("/bikes/{userId}")
     public ResponseEntity<List<Bike>> getBikes(@PathVariable("userId") int userId){
-        User user = userService.getUserById(userId);
+        User user = (User) userService.getUserById(userId);
         if (user == null) {
             return ResponseEntity.notFound().build();
         }

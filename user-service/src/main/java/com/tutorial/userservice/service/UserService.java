@@ -10,9 +10,9 @@ import java.util.Map;
 public interface UserService {
 
 
-    public List<User> getAll();
+    public Map<String, Object> getAll();
 
-    public User getUserById(int id);
+    public Map<String, Object> getUserById(int id);
 
     public User save(User user);
 

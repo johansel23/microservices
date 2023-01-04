@@ -25,13 +25,45 @@ public class UserServiceImpl implements UserService{
     @Autowired
     BikeFeignClient bikeFeignClient;
 
+//    @Override
+//    public List<User> getAll() {
+//        return userRepository.findAll();
+//    }
+
+
     @Override
-    public List<User> getAll() {
-        return userRepository.findAll();
+    public Map<String, Object> getAll() {
+
+        Map<String, Object> result = new HashMap<>();
+
+        List<User> users = userRepository.findAll();
+        if (users.isEmpty()) {
+            result.put("Usuarios", "No hay usuarios");
+            return result;
+        }
+        result.put("Usuarios", users);
+
+        return result;
     }
+
+
+
+//    @Override
+//    public User getUserById(int id) {
+//
+//        return userRepository.findById(id).orElse(null);
+//    }
+
+
     @Override
-    public User getUserById(int id) {
-        return userRepository.findById(id).orElse(null);
+    public Map<String, Object> getUserById(int id) {
+        Map<String, Object> result = new HashMap<>();
+
+        User user = userRepository.findById(id).orElse(null);
+
+        result.put("Usuario", user);
+
+        return result;
     }
     @Override
     public User save(User user) {
